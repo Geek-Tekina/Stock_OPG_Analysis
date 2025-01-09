@@ -1,32 +1,46 @@
-Overview :
+# Stock Analysis CLI Application
 
-Building A Stock Analysis CLI Application
--> It uses OPG startegy, Open Price Gap (need not go in depth of formulas used)
+## Overview
 
-The project can be broken into phases : 
--> Load Stocks from a CSV File 
--> Filter out unworthy Stocks
--> Do some processing on the stocks - position (quantity and price)
--> fetch news on each stocks
--> Produce output as JSON
----------------------------------------------------------------------------------------------------------------
+This CLI application is built to analyze stocks using the **OPG (Open Price Gap)** strategy. 
 
-Day wise Progress -
+The project can be broken down into the following phases:
+- **Load Stocks from a CSV File**
+- **Filter out unworthy Stocks**
+- **Process Stocks (position: quantity and price)**
+- **Fetch News for each Stock**
+- **Produce Output in JSON Format**
 
-Day: 1
-Our CSV file is in this format 
-row 1 = Ticker | row 2 = Gap | row 3 = Opening Price  
+---
 
-    Reading the CSV File 
-    -> Before reading the CSV file, program needs to open the file. We use os.Open("/path) method.
-    -> csv.NewReader is used to read the csv file
+## Day-Wise Progress
 
-    Stock Struct
-    -> Now we need a type to store the data, thus we create a Struct named Stock having Ticker, Gap and OpeningPrice
-    -> then we will have a slice of Stock (Struct) Objects
+### Day 1
 
-    Here we encounter error, as the values from CSV files are string which can be intialised to Stock Struct having float64 type. So we use strconv.ParseFloat() method to convert string to float 32/64
+#### CSV File Format
 
-    Closing the File
-    -> We use defer f.close()
----------------------------------------------------------------------------------------------------------------
+The CSV file is structured as follows:
+- **Row 1**: Ticker
+- **Row 2**: Gap
+- **Row 3**: Opening Price  
+
+#### Reading the CSV File
+- Before reading the CSV file, the program needs to open the file. This is done using the `os.Open("/path")` method.
+- We use `csv.NewReader` to read the contents of the CSV file.
+
+#### Stock Struct
+- To store the stock data, we create a `Stock` struct with the following fields:
+  - **Ticker**
+  - **Gap**
+  - **Opening Price**
+- We then use a slice to hold multiple `Stock` struct objects.
+
+#### Data Type Conversion
+- CSV file values are read as strings, but the `Stock` struct fields (`Gap` and `OpeningPrice`) are of type `float64`. 
+- To handle this, we use `strconv.ParseFloat()` to convert the string values to `float64`.
+
+#### Closing the File
+- We use `defer f.Close()` to ensure the file is closed properly after the operation is complete.
+
+---
+
