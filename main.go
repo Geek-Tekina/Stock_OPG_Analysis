@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	"math"
 	"os"
 	"slices"
 	"strconv"
@@ -80,4 +81,16 @@ func main() {
 	for index, stockElement := range stocks {
 		fmt.Printf("Stock %v : %v \n", index+1, stockElement)
 	}
+
+	fmt.Println("Now the program will filter out the unworthy stocks as per the condition that Gap >= 0.1")
+
+	stocks = slices.DeleteFunc(stocks, func(s Stock) bool {
+		if math.Abs(s.Gap) < .1 {
+			return true
+		} else {
+			return false
+		}
+	})
+
+	fmt.Println("The list of worthy stocks is :", stocks)
 }
