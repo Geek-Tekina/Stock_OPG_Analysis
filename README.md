@@ -55,7 +55,7 @@ The CSV file is structured as follows:
 #### Filtering Unworthy Stocks
 
 - Used `DeleteFunc()` of slices to delete the unworthy stocks.
-
+---
 ### Day 3
 
 #### Calculating positions for the shares
