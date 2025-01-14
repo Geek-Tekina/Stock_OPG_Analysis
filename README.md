@@ -55,3 +55,32 @@ The CSV file is structured as follows:
 #### Filtering Unworthy Stocks
 
 - Used `DeleteFunc()` of slices to delete the unworthy stocks.
+
+### Day 3
+
+#### Calculating positions for the shares
+
+- Postion is : Entry price, number of shares, target profit, stop less price
+- For calculation we have coded some hard coded values and some formulas
+- To store the result, a struct Position is created
+
+```go type
+Position struct {
+EntryPrice float64 // the price at which to buy or sell
+Shares int // amount of shares to buy / sell
+TakeProfitPrice float64 // the price at which to take exit and make profit
+StopLossPrice float64 // the price at which to stop my loss if stock doesn't go our way
+Profit float64 // expected final profit
+}
+```
+
+- then `calculate()` function
+- Now we have instance of Stock struct and Position Struct for each stocks we have. We need to combine both under
+  Selection Struct having Ticker and Postion : this will help user to determine if to buy the stock or not
+
+```go
+type Selection struct {
+Ticker string
+Position
+}
+```

@@ -71,6 +71,47 @@ func Load(path string) ([]Stock, error) {
 	return stocks, nil
 }
 
+var accountBalance = 10000.0                         //money in the trading account
+var lossTolerance = .02                              // what percentage of amount i can bear to lose
+var maxLossPerTrade = accountBalance * lossTolerance //max amount i can tolerate to lose
+var profitPercent = .8                               // desired profit
+
+type Position struct {
+	EntryPrice      float64 // the price at which to buy or sell
+	Shares          int     // amount of shares to buy / sell
+	TakeProfitPrice float64 // the price at which to take exit and make profit
+	StopLossPrice   float64 // the price at which to stop my loss if stock doesn't go our way
+	Profit          float64 // expected final profit
+}
+
+// a function to calculate the Position for a stock
+func Calculate(gapPercent, openingPrice float64) Position {
+	closingPrice := openingPrice / (1 + gapPercent)
+	gapValue := closingPrice - openingPrice
+	profitFromGap := profitPercent * gapValue
+
+	stopLoss := openingPrice - profitFromGap
+	takeProfit := openingPrice + profitFromGap
+
+	shares := int(maxLossPerTrade / math.Abs(stopLoss-openingPrice))
+
+	profit := math.Abs(openingPrice-takeProfit) * float64(shares)
+	profit = math.Round(profit*100) / 100
+
+	return Position{
+		EntryPrice:      math.Round(openingPrice*100) / 100,
+		Shares:          shares,
+		TakeProfitPrice: math.Round(takeProfit*100) / 100,
+		StopLossPrice:   math.Round(stopLoss*100) / 100,
+		Profit:          math.Round(profit*100) / 100,
+	}
+}
+
+type Selection struct {
+	Ticker string
+	Position
+}
+
 func main() {
 	stocks, err := Load("./opg.csv")
 	if err != nil {
@@ -93,4 +134,23 @@ func main() {
 	})
 
 	fmt.Println("The list of worthy stocks is :", stocks)
+
+	fmt.Println("Now calculating the Position for each stock")
+
+	var selections []Selection // slice to have all the Selection instance for each stock after position calc.
+
+	for _, stock := range stocks {
+		position := Calculate(stock.Gap, stock.OpeningPrice)
+		sel := Selection{
+			Ticker:   stock.Ticker,
+			Position: position,
+		}
+
+		selections = append(selections, sel)
+	}
+
+	fmt.Println("The selection slice after position calculation is")
+	for a, selection := range selections {
+		fmt.Println(a, "...", selection)
+	}
 }
