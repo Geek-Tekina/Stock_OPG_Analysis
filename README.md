@@ -55,7 +55,9 @@ The CSV file is structured as follows:
 #### Filtering Unworthy Stocks
 
 - Used `DeleteFunc()` of slices to delete the unworthy stocks.
+
 ---
+
 ### Day 3
 
 #### Calculating positions for the shares
@@ -84,3 +86,67 @@ Ticker string
 Position
 }
 ```
+
+---
+
+### Day 4
+
+#### Fetching news
+
+- We will fetch news on each stock from `seekingalpha.com`
+- first we created a http client `http.NewRequest(http.MethodGet, url + ticker, nil)`, this takes 3 argument : method, url, req-body if any
+- We added a header, and then created http Client to make request using `Do()` function.
+- `Do()` fnc return a pointer to http response object
+
+##### Mapping response data and creating structs to read data from response
+
+Demo response
+
+```go
+{
+    "data": [
+        {
+            "id": "4395525",
+            "type": "news",
+            "attributes": {
+                "publishOn": "2025-01-16T05:56:23-05:00",
+                "isLockedPro": false,
+                "commentCount": 10,
+                "gettyImageUrl": "https://static.seekingalpha.com/cdn/s3/uploads/getty_images/2193527787/image_2193527787.jpg",
+                "videoPreviewUrl": null,
+                "videoDuration": null,
+                "themes": {},
+                "title": "Biden warns of ultrarich oligarchy, tech-industrial complex in farewell speech",
+                "isPaywalled": false
+```
+
+- So here we will focus on PublishOn and Title attributes from the `res.Body.data`, So we have created a struct
+  ```go
+  type attributes struct {
+  PublishOn time.Time `json:publishOn`
+  Title     string    `json:title`
+  }
+  ```
+  the `` helps to clearify the mapping process that PublishOn will be mapped to json - publishOn attribute, it is a good practise
+- Now as `attributes` is inside `data`, we need to have data types that can contain the required format.
+
+  ```go
+  type attributes struct {
+  PublishOn time.Time `json:publishOn`
+  Title     string    `json:title`
+  }
+
+  type seekingAlphaNews struct {
+    Attributes attributes `json:attributes`
+  }
+  type SeekingAlphaResponse struct {
+    Data []seekingAlphaNews `json:data`      // response can be mapped to SeekinAlphaNews
+  }
+  ```
+
+- Now we map all the req data in our struct
+  ```go
+  res := &SeekingAlphaResponse{}
+  json.NewDecoder(response.Body).Decode(res)
+  ```
+- Now finally we have articles slice of Article Strcut objects, which are returned along with the error.

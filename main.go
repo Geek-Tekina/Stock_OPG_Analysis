@@ -2,11 +2,14 @@ package main
 
 import (
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"math"
+	"net/http"
 	"os"
 	"slices"
 	"strconv"
+	"time"
 )
 
 type Stock struct {
@@ -112,6 +115,69 @@ type Selection struct {
 	Position
 }
 
+const (
+	url          = "https://seeking-alpha.p.rapidapi.com/news/v2/list-by-symbol?size=5&id="
+	apiKeyHeader = "x-rapidapi-key"
+	apiKey       = "825c03ae97mshadecf28e3f93a50p17fe2ajsne91b867074f5"
+)
+
+type attributes struct {
+	PublishOn time.Time `json:publishOn`
+	Title     string    `json:title`
+}
+
+type seekingAlphaNews struct {
+	Attributes attributes `json:attributes`
+}
+type SeekingAlphaResponse struct {
+	Data []seekingAlphaNews `json:data`
+}
+
+type Article struct {
+	PublishOn time.Time
+	Headline  string
+}
+
+func FetchNews(ticker string) ([]Article, error) {
+	// Now we will first create a http client to make request, this return a pointer to req object and err
+	req, err := http.NewRequest(http.MethodGet, url+ticker, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Add(apiKeyHeader, apiKey)
+
+	client := &http.Client{}
+	response, err := client.Do(req)
+
+	if err != nil {
+		return nil, err
+	}
+	// fmt.Println("req ========> ", req)
+	// fmt.Println("res ========> ", res)
+
+	//reading body
+	// body, err := io.ReadAll(res.Body)
+	// if err != nil {
+	// 	return err
+	// }
+
+	// fmt.Println("Response Body >>>>>>>>>>>>", string(body))
+	res := &SeekingAlphaResponse{}
+	json.NewDecoder(response.Body).Decode(res)
+	// fmt.Println(res)
+
+	var articles []Article
+
+	for _, item := range res.Data {
+		art := Article{
+			PublishOn: item.Attributes.PublishOn,
+			Headline:  item.Attributes.Title,
+		}
+		articles = append(articles, art)
+	}
+	return articles, nil
+}
+
 func main() {
 	stocks, err := Load("./opg.csv")
 	if err != nil {
@@ -153,4 +219,16 @@ func main() {
 	for a, selection := range selections {
 		fmt.Println(a, "...", selection)
 	}
+
+	fmt.Println("Now we are gonna fetch news for your stocks !!")
+	articles, err := FetchNews("AAPL")
+
+	if err != nil {
+		fmt.Println("Error in fetching the API", err)
+	}
+
+	for i, article := range articles {
+		fmt.Println("Article", i+1, "-> Published on :", article.PublishOn, "& Headline :", article.Headline)
+	}
+
 }
