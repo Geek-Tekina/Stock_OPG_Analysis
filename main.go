@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
+	"log"
 	"math"
 	"net/http"
 	"os"
@@ -113,6 +114,7 @@ func Calculate(gapPercent, openingPrice float64) Position {
 type Selection struct {
 	Ticker string
 	Position
+	Articles []Article
 }
 
 const (
@@ -207,9 +209,17 @@ func main() {
 
 	for _, stock := range stocks {
 		position := Calculate(stock.Gap, stock.OpeningPrice)
+		articles, err := FetchNews(stock.Ticker)
+		if err != nil {
+			log.Printf("Error loading news about %s, %v", stock.Ticker, err)
+			continue
+		} else {
+			log.Printf("Found %d articles on %v", len(articles), stock.Ticker)
+		}
 		sel := Selection{
 			Ticker:   stock.Ticker,
 			Position: position,
+			Articles: articles,
 		}
 
 		selections = append(selections, sel)
@@ -221,14 +231,14 @@ func main() {
 	}
 
 	fmt.Println("Now we are gonna fetch news for your stocks !!")
-	articles, err := FetchNews("AAPL")
+	// articles, err := FetchNews("AAPL")
 
-	if err != nil {
-		fmt.Println("Error in fetching the API", err)
-	}
+	// if err != nil {
+	// 	fmt.Println("Error in fetching the API", err)
+	// }
 
-	for i, article := range articles {
-		fmt.Println("Article", i+1, "-> Published on :", article.PublishOn, "& Headline :", article.Headline)
-	}
+	// for i, article := range articles {
+	// 	fmt.Println("Article", i+1, "-> Published on :", article.PublishOn, "& Headline :", article.Headline)
+	// }
 
 }

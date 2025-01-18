@@ -150,3 +150,15 @@ Demo response
   json.NewDecoder(response.Body).Decode(res)
   ```
 - Now finally we have articles slice of Article Strcut objects, which are returned along with the error.
+
+### Day 5
+
+- Now we will update Selection struct to have slice of articles for each stock
+  ```go
+  type Selection struct {
+  Ticker string
+  Position
+  Articles []Article
+  }
+  ```
+- We will call `FetchNews()` func in the for_range loop when creating selection stock and set the articles as well
