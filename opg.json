@@ -1,0 +1,212 @@
+[
+  {
+    "Ticker": "AAPL",
+    "EntryPrice": 145.5,
+    "Shares": 3,
+    "TakeProfitPrice": 80.83,
+    "StopLossPrice": 210.17,
+    "Profit": 194,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-18T09:37:00-05:00",
+        "Headline": "Notable analyst calls this week: AMD, UPS and Devon Energy stocks among top picks"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-17T10:18:32-05:00",
+        "Headline": "Supreme Court upholds TikTok's U.S. ban ahead of Sunday deadline"
+      },
+      {
+        "PublishOn": "2025-01-17T07:52:03-05:00",
+        "Headline": "Apple gets Tactical Outperform tag at Evercore ahead of earnings"
+      },
+      {
+        "PublishOn": "2025-01-17T07:26:20-05:00",
+        "Headline": "China moves to hinder Apple, BYD manufacturing shifts across Asia - report"
+      }
+    ]
+  },
+  {
+    "Ticker": "GOOG",
+    "EntryPrice": 2750.75,
+    "Shares": 0,
+    "TakeProfitPrice": 4951.35,
+    "StopLossPrice": 550.15,
+    "Profit": 0,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-17T15:56:31-05:00",
+        "Headline": "FTC examines AI deals between Microsoft \u0026 OpenAI, Amazon, Google \u0026 Anthropic"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-17T10:18:32-05:00",
+        "Headline": "Supreme Court upholds TikTok's U.S. ban ahead of Sunday deadline"
+      },
+      {
+        "PublishOn": "2025-01-17T08:23:15-05:00",
+        "Headline": "Lumentum rises after double upgrade at Barclays"
+      },
+      {
+        "PublishOn": "2025-01-16T15:08:34-05:00",
+        "Headline": "Microsoft ups price to 365 Family, Personal plans for first time in 12 years, adds AI"
+      }
+    ]
+  },
+  {
+    "Ticker": "AMZN",
+    "EntryPrice": 3350.25,
+    "Shares": 0,
+    "TakeProfitPrice": 2201.59,
+    "StopLossPrice": 4498.91,
+    "Profit": 0,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-18T10:46:51-05:00",
+        "Headline": "Amazon suspends drone deliveries after two training crashes: report (update)"
+      },
+      {
+        "PublishOn": "2025-01-17T15:56:31-05:00",
+        "Headline": "FTC examines AI deals between Microsoft \u0026 OpenAI, Amazon, Google \u0026 Anthropic"
+      },
+      {
+        "PublishOn": "2025-01-17T14:28:11-05:00",
+        "Headline": "FTC study finds intermediaries survey consumer habits to advise retailers on price"
+      },
+      {
+        "PublishOn": "2025-01-17T13:10:55-05:00",
+        "Headline": "MongoDB, Oracle, monday.com rank as Cantor's top picks for AI software, infrastructure"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      }
+    ]
+  },
+  {
+    "Ticker": "MSFT",
+    "EntryPrice": 290.2,
+    "Shares": 0,
+    "TakeProfitPrice": -2263.56,
+    "StopLossPrice": 2843.96,
+    "Profit": 0,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-17T15:56:31-05:00",
+        "Headline": "FTC examines AI deals between Microsoft \u0026 OpenAI, Amazon, Google \u0026 Anthropic"
+      },
+      {
+        "PublishOn": "2025-01-17T13:10:55-05:00",
+        "Headline": "MongoDB, Oracle, monday.com rank as Cantor's top picks for AI software, infrastructure"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-16T15:08:34-05:00",
+        "Headline": "Microsoft ups price to 365 Family, Personal plans for first time in 12 years, adds AI"
+      },
+      {
+        "PublishOn": "2025-01-16T12:16:53-05:00",
+        "Headline": "Arqit Quantum soars even as quantum stocks muted after strong run"
+      }
+    ]
+  },
+  {
+    "Ticker": "TSLA",
+    "EntryPrice": 720.5,
+    "Shares": 0,
+    "TakeProfitPrice": 336.23,
+    "StopLossPrice": 1104.77,
+    "Profit": 0,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-18T13:09:08-05:00",
+        "Headline": "Nvidia leads, Tesla trails among Mag 7 in earnings prospects"
+      },
+      {
+        "PublishOn": "2025-01-17T16:14:29-05:00",
+        "Headline": "Nasdaq, S\u0026P, Dow end higher in Wall Street's best week since November"
+      },
+      {
+        "PublishOn": "2025-01-17T11:35:25-05:00",
+        "Headline": "Europe deepens probe against Musk's X, issues 'retention order' for documents"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-16T07:48:42-05:00",
+        "Headline": "Tesla offers discounts on some Cybertrucks as EV competition heats up"
+      }
+    ]
+  },
+  {
+    "Ticker": "META",
+    "EntryPrice": 340.15,
+    "Shares": 0,
+    "TakeProfitPrice": 1156.51,
+    "StopLossPrice": -476.21,
+    "Profit": 0,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-17T10:18:32-05:00",
+        "Headline": "Supreme Court upholds TikTok's U.S. ban ahead of Sunday deadline"
+      },
+      {
+        "PublishOn": "2025-01-17T09:09:50-05:00",
+        "Headline": "Meta says Community Notes will not apply to paid promotions - report"
+      },
+      {
+        "PublishOn": "2025-01-16T17:05:09-05:00",
+        "Headline": "Meta's Bosworth tells staff recent policy changes to HR, content moderation were mishandled - report"
+      },
+      {
+        "PublishOn": "2025-01-16T09:39:39-05:00",
+        "Headline": "TikTok top boss Shou Chew to attend Trump's swearing-in ceremony - report"
+      }
+    ]
+  },
+  {
+    "Ticker": "NVDA",
+    "EntryPrice": 200.3,
+    "Shares": 2,
+    "TakeProfitPrice": 104.16,
+    "StopLossPrice": 296.44,
+    "Profit": 192.29,
+    "Articles": [
+      {
+        "PublishOn": "2025-01-18T13:09:08-05:00",
+        "Headline": "Nvidia leads, Tesla trails among Mag 7 in earnings prospects"
+      },
+      {
+        "PublishOn": "2025-01-17T17:39:04-05:00",
+        "Headline": "Nvidia details hardware affected by 'AI Diffusion' rule"
+      },
+      {
+        "PublishOn": "2025-01-17T11:40:57-05:00",
+        "Headline": "Semtech surges on AI data center role, UBS initiates with Buy on Nvidia content win"
+      },
+      {
+        "PublishOn": "2025-01-17T11:30:49-05:00",
+        "Headline": "Jefferies ranks NVDA as top Magnificent Seven name and MSFT at the bottom"
+      },
+      {
+        "PublishOn": "2025-01-17T08:55:17-05:00",
+        "Headline": "SA Charts: Americas continue to lead semiconductor sales in November"
+      }
+    ]
+  }
+]

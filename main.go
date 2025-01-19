@@ -179,6 +179,20 @@ func FetchNews(ticker string) ([]Article, error) {
 	}
 	return articles, nil
 }
+func Deliver(filePath string, selections []Selection) error {
+	file, err := os.Create(filePath)
+	if err != nil {
+		return fmt.Errorf("Error creating file : %w", err)
+	}
+	defer file.Close()
+
+	encoder := json.NewEncoder(file)
+	err = encoder.Encode(selections)
+	if err != nil {
+		return fmt.Errorf("error encoding selections : %w", err)
+	}
+	return nil
+}
 
 func main() {
 	stocks, err := Load("./opg.csv")
@@ -240,5 +254,13 @@ func main() {
 	// for i, article := range articles {
 	// 	fmt.Println("Article", i+1, "-> Published on :", article.PublishOn, "& Headline :", article.Headline)
 	// }
+	fmt.Println("Writing final output to file as JSON")
+	outputPath := "./opg.json"
+	err = Deliver(outputPath, selections)
+	if err != nil {
+		log.Printf("Error writing output %v", err)
+	}
+
+	fmt.Println("Your results are now in opg.json. Happy stocking with Go now :)")
 
 }

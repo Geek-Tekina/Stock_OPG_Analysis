@@ -162,3 +162,11 @@ Demo response
   }
   ```
 - We will call `FetchNews()` func in the for_range loop when creating selection stock and set the articles as well
+
+### Day 6
+
+- Now we will write the output into the file as JSON using `Deliver()` fnc.
+  - First using os package file is created
+  - then using encoder for JSON, the values from selections slice is written in file !!
+
+#### Happy Stoking with Go !!
