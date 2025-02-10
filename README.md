@@ -169,4 +169,5 @@ Demo response
   - First using os package file is created
   - then using encoder for JSON, the values from selections slice is written in file !!
 
-#### Happy Stoking with Go !!
+#### Happy Stocking with Go !!
+
